@@ -1,0 +1,309 @@
+[
+    {
+        "row": 1,
+        "col": 1,
+        "cols": 2,
+        "type": "common",
+        "title": "流程信息",
+        "containers": [
+            {
+                "row": 1,
+                "col": 1,
+                "cols": 2,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "flowNo",
+                        "label": "流水号",
+                        "value": "SJ_20151216_0048",
+                        "displayValue": "SJ_20151216_0048",
+                        "name": "flowNo",
+                        "extend": {},
+                        "require": false,
+                        "readonly": true
+                    },
+                    {
+                        "row": 1,
+                        "col": 2,
+                        "type": "date",
+                        "label": "创建时间",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "extAttrsValues['createTime!date']",
+                        "extend": {},
+                        "require": false,
+                        "readonly": true
+                    },
+                    {
+                        "row": 2,
+                        "col": 1,
+                        "type": "userSelect",
+                        "label": "创建人",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "extAttrsValues['creatorId!userSelect']",
+                        "extend": {
+                            "url": "/api/v2/mobile/acm/users/query?baseFilter="
+                        },
+                        "require": false,
+                        "readonly": true
+                    },
+                    {
+                        "row": 2,
+                        "col": 2,
+                        "type": "userSelect",
+                        "label": "当前处理人",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "extAttrsValues['currentActors!userSelect']",
+                        "extend": {
+                            "url": "/api/v2/mobile/acm/users/query?baseFilter="
+                        },
+                        "require": false,
+                        "readonly": true
+                    },
+                    {
+                        "row": 3,
+                        "col": 1,
+                        "type": "dynamicSelect",
+                        "label": "流程环节",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "extAttrsValues['status!dynamicSelect']",
+                        "extend": {},
+                        "require": false,
+                        "readonly": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "row": 2,
+        "col": 1,
+        "cols": 1,
+        "type": "common",
+        "title": "事件报告人",
+        "containers": [
+            {
+                "row": 1,
+                "col": 1,
+                "cols": 1,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "userSelect",
+                        "label": "报告人",
+                        "value": "admin",
+                        "displayValue": "顶级管理员",
+                        "name": "announcer",
+                        "extend": {
+                            "url": "/api/v2/mobile/acm/users/query?baseFilter="
+                        },
+                        "require": false,
+                        "readonly": false
+                    },
+                    {
+                        "row": 2,
+                        "col": 1,
+                        "type": "departmentSelect",
+                        "label": "报告部门",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "announcerDept",
+                        "extend": {
+                            "url": "/api/v2/mobile/acm/departments/query?baseFilter="
+                        },
+                        "require": false,
+                        "readonly": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "row": 3,
+        "col": 1,
+        "cols": 1,
+        "type": "common",
+        "title": "基本信息",
+        "containers": [
+            {
+                "row": 1,
+                "col": 1,
+                "cols": 2,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "date",
+                        "label": "发生时间",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "occurTime",
+                        "extend": {},
+                        "require": true,
+                        "readonly": false
+                    }
+                ]
+            },
+            {
+                "row": 2,
+                "col": 1,
+                "cols": 1,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "bizCode",
+                        "label": "事件类别",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "category",
+                        "extend": {
+                            "url": "/api/v2/mobile/itsm/bizmodules/bizcodes/query?bizCodeType=incident_category"
+                        },
+                        "require": true,
+                        "readonly": false
+                    },
+                    {
+                        "row": 2,
+                        "col": 1,
+                        "type": "bizCode",
+                        "label": "优先级",
+                        "value": "78FDF19A6B7244C8BC9067D5E06990DC",
+                        "displayValue": "中(1天)",
+                        "name": "priority",
+                        "extend": {
+                            "url": "/api/v2/mobile/itsm/bizmodules/bizcodes/query?bizCodeType=incident_priority"
+                        },
+                        "require": true,
+                        "readonly": false
+                    },
+                    {
+                        "row": 3,
+                        "col": 1,
+                        "type": "bizCode",
+                        "label": "事件性质",
+                        "value": "fa43a612-30e2-4427-88c2-588ddac19ce0",
+                        "displayValue": "故障",
+                        "name": "kind",
+                        "extend": {
+                            "url": "/api/v2/mobile/itsm/bizmodules/bizcodes/query?bizCodeType=incident_kind"
+                        },
+                        "require": true,
+                        "readonly": false
+                    },
+                    {
+                        "row": 4,
+                        "col": 1,
+                        "type": "text",
+                        "label": "事件标题",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "title",
+                        "extend": {},
+                        "require": true,
+                        "readonly": false
+                    },
+                    {
+                        "row": 5,
+                        "col": 1,
+                        "type": "textarea",
+                        "label": "事件描述",
+                        "value": "",
+                        "displayValue": "",
+                        "name": "detail",
+                        "extend": {},
+                        "require": true,
+                        "readonly": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "row": 4,
+        "col": 1,
+        "cols": 1,
+        "type": "common",
+        "title": "不知道该叫啥名",
+        "containers": [
+            {
+                "row": 1,
+                "col": 1,
+                "cols": 1,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "relateResource",
+                        "label": "关联的配置项",
+                        "value": {
+                            "columnModel": [
+                                {
+                                    "header": "配置项类型",
+                                    "dataIndex": "templetName"
+                                },
+                                {
+                                    "header": "配置项显示名称",
+                                    "dataIndex": "displayName"
+                                }
+                            ],
+                            "data": []
+                        },
+                        "displayValue": "",
+                        "name": "relateResource",
+                        "extend": {},
+                        "require": false,
+                        "readonly": false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "row": 5,
+        "col": 1,
+        "cols": 1,
+        "type": "common",
+        "title": "不知道该叫啥名",
+        "containers": [
+            {
+                "row": 1,
+                "col": 1,
+                "cols": 1,
+                "type": "common",
+                "components": [
+                    {
+                        "row": 1,
+                        "col": 1,
+                        "type": "attachFile",
+                        "label": "附件",
+                        "value": {
+                            "columnModel": [
+                                {
+                                    "header": "附件名称",
+                                    "dataIndex": "fileName"
+                                }
+                            ],
+                            "data": []
+                        },
+                        "displayValue": "",
+                        "name": "attachFile",
+                        "extend": {},
+                        "require": false,
+                        "readonly": false
+                    }
+                ]
+            }
+        ]
+    }
+]

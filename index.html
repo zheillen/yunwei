@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运维APP</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0 maximum-scale=1, user-scalable=no"> 
+    <script src="./js/lib/zepto.js"></script>
+    <script src="./js/lib/vue.js"></script>
+</head>
+<body>
+    <script>
+        // (function(win){
+        //     var w = document.body && document.body.clientWidth,
+        //     f = w*48/360;
+        //     window.document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:'+f+'px;');
+        // })(window);
+    </script>
+    <section>
+        <form action="" id="testForm"> 
+            <div class="oneObj" v-for="obj in objs">
+                <div class="containersWrap" v-for="cont in obj.containers"> 
+                    <template v-if="cont.cols==2">
+                        <div>{{cont.cols}}</div>
+                        <div class="oneRow" v-for="(index, comp) in cont.components">
+                            <template v-for="row in comp.onerow">
+                                <div class="twoColumns">
+                                    <label id="twoRowsFont">{{row.label}}</label>
+                                    <div class="itemWrap">
+                                        <template v-if="row.typeClassify=='date'">
+                                            <input class="dateStyle" type="text" value={{row.displayValue}}>
+                                        </template>
+                                        <template v-else>
+                                            <input class="ityle" type="text" v-model="row.displayValue">
+                                            <input class="itemStyle" type="text" value={{row.displayValue}}>
+                                        </template>  
+
+                                    </div>
+                                </div>                                
+                            </template>
+                        </div>                        
+                    </template>
+
+                    <template v-else>
+                        <div>{{cont.cols}}</div>
+                        <div class="oneRow" v-for="(index, comp) in cont.components">
+                            <template v-for="row in comp.onerow">
+                                <div class="oneColumn">
+                                    <label class="twoRowFont">{{row.label}}</label>
+                                    <div class="itemWrap">
+                                        <template v-if="row.typeClassify=='textarea'">
+                                            <textarea class="longtextDetail" rows="5" v-model="row.displayValue"></textarea>
+                                            <input class="hiddenEle" type="text" name="detail" value={{row.displayValue}}>
+                                        </template>
+
+                                        <template v-if="row.typeClassify=='table'">
+                                            <table class="contentForm {{row.type}}" cellspacing="0" cellpadding="5">
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="(index, col) in row.value.columnModel" class="col_{{$index}}" dataIndex={{col.dataIndex}}>{{col.header}}</th>    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(index, rowData) in row.value.data" id="{{rowData.id}}">
+                                                        <template v-for="col in row.value.columnModel">
+                                                            <td>{{col.dataIndex | isInParent rowData}}</td>
+                                                        </template>
+                                                        <td><img src="./imgs/i_delete.png" class="i_delete" alt="delete"  onclick="formDisplay.ui.deleteServerRes(this)"></td>
+                                                    </tr>                                                   
+                                                </tbody>
+                                            </table>
+                                        </template>
+
+                                        <template v-else>
+                                            <input class="itemStyle" type="text" v-model="row.displayValue">
+                                            <input class="hiddenEle" type="text" name="announcer" value={{row.displayValue}}>
+                                        </template>
+                                    </div>
+                                </div> 
+                            </template>               
+                        </div>
+                    </template>                    
+                </div>
+            </div>
+        </form> 
+    </section>
+    <script src="./js/main.js"></script>
+</body>
+</html>
